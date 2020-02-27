@@ -1,5 +1,8 @@
 Products Grid
 ====
+[![CircleCI](https://circleci.com/gh/Luckzman/CreatellaReactTest.svg?style=svg)](https://circleci.com/gh/Luckzman/CreatellaReactTest)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c99527af70fdf8cd01b6/maintainability)](https://codeclimate.com/github/Luckzman/CreatellaReactTest/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c99527af70fdf8cd01b6/test_coverage)](https://codeclimate.com/github/Luckzman/CreatellaReactTest/test_coverage)
 
 This is an ecommerce site, where you can buy all sorts of ascii faces like `(ノ・∀・)ノ` and `¯_(ツ)_/¯`, in a wide variety of font sizes. The homepage should display a list of products for people to browse.
 
