@@ -79,6 +79,7 @@ class AsciiFacesPage extends Component{
   }
   
   render(){
+    // console.log(this.props, 'props')
     const {loading} = this.props;
     const { isLastItem, productList } = this.state;
     return(
