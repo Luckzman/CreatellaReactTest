@@ -21,7 +21,7 @@ class AsciiFacesPage extends Component{
 
   getProduct = async(page, initial, sort) => {
     const { isLastItem } = this.state;
-    const {handleReset, resetList, setLoading} = this.props;
+    const { setLoading } = this.props;
     if (!initial && nextListings[1]) {
       recentListing.push(...nextListings);
       nextListings = [];
@@ -79,39 +79,26 @@ class AsciiFacesPage extends Component{
   }
   
   render(){
-    // console.log(this.props, 'props')
     const {loading} = this.props;
     const { isLastItem, productList } = this.state;
     return(
-      <>
       <div className="product" >
         <div className="container">
           <div className="product-grid">
-            {
-              productList.map((product, index) => {
-                if (product === "last") {
-                  return <p key={index}>~ end of catalogue ~</p>;
-                } else if (product.ad === "ads") {
-                  return <Ads key={index} src={product.adsUrl} />
-                } else {
-                  return (
-                    <AsciiFacesCard 
-                      key={index}
-                      id={product.id} 
-                      face={product.face} 
-                      size={product.size} 
-                      price={product.price} 
-                      date={product.date}
-                    />
-                  );
-                }
-              })
-            }
+            {productList.map((product, index) => {
+              if (product === "last") return <h2 key={index}>~ end of catalogue ~</h2>;
+              else if (product.ad === "ads") return <Ads key={index} src={product.adsUrl} />
+              else return <AsciiFacesCard 
+                key={index}
+                id={product.id} 
+                face={product.face} 
+                size={product.size} 
+                price={product.price} 
+                date={product.date} /> })}
           </div>
           {loading && !isLastItem && <LoadingIcon />}
         </div>
       </div>
-    </>
     );
   }
 }

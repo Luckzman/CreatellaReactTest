@@ -4,6 +4,16 @@ Products Grid
 [![Maintainability](https://api.codeclimate.com/v1/badges/c99527af70fdf8cd01b6/maintainability)](https://codeclimate.com/github/Luckzman/CreatellaReactTest/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/c99527af70fdf8cd01b6/test_coverage)](https://codeclimate.com/github/Luckzman/CreatellaReactTest/test_coverage)
 
+# Start project
+
+- Git clone `https://github.com/Luckzman/CreatellaReactTest.git`
+- cd into the cloned folder, run `cd CreatellaReactTest`
+- install dependencies and start server `npm install` and `npm run start`
+-` open another terminal window` and cd into frontend `cd frontend` 
+- install dependencies and run app `npm install` and `npm run start`
+
+# Project Details
+
 This is an ecommerce site, where you can buy all sorts of ascii faces like `(ノ・∀・)ノ` and `¯_(ツ)_/¯`, in a wide variety of font sizes. The homepage should display a list of products for people to browse.
 
 Please read the instructions and FAQ below before beginning.

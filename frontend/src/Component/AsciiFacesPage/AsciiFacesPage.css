@@ -20,10 +20,9 @@
   }
 }
 
-  
-  @media screen and (max-width: 414px) {
-    .product .container .product-grid{
-      padding:5px;
-      grid-template-columns: repeat(1, 1fr);
-    }
+@media screen and (max-width: 414px) {
+  .product .container .product-grid{
+    padding:5px;
+    grid-template-columns: repeat(1, 1fr);
   }
+}
