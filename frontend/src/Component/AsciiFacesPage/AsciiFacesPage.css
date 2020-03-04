@@ -11,5 +11,19 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 30px;
-
 }
+
+@media screen and (max-width: 1024px) {
+  .product .container .product-grid{
+    padding:5px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+  
+  @media screen and (max-width: 414px) {
+    .product .container .product-grid{
+      padding:5px;
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
