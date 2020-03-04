@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import AsciiFacesCard from '../AsciiFacesCard';
-import Ads from '../Ads'
+import {ReactComponent as LoadingIcon} from './Gear-0.2s-101px.svg'
+import Ads from '../Ads';
 import randomNumber from '../../utils/randomAdsFunc';
 import './AsciiFacesPage.css';
 
@@ -11,27 +12,24 @@ class AsciiFacesPage extends Component{
   constructor(props){
     super(props);
     this.state = {
-      loading: false,
       productList: [],
       nextListings: [],
       isLastItem: false
     };
   }
 
-  setLoading = (loading) => {
-    this.setState({loading})
-  }
 
-  getProduct = async(page, initial) => {
+  getProduct = async(page, initial, sort) => {
     const { isLastItem } = this.state;
+    const {handleReset, resetList, setLoading} = this.props;
     if (!initial && nextListings[1]) {
       recentListing.push(...nextListings);
       nextListings = [];
-      this.setLoading(true);
+      setLoading(true);
     }
     if (!isLastItem) {
       try {
-        const url = `http://localhost:3000/api/products?_page=${page}&_limit=100&_sort=" + sortMode`;
+        const url = `http://localhost:3000/api/products?_page=${page}&_limit=20&_sort=${sort}`;
         const response = await fetch(url)
         const result = await response.json();
         if (result.length) {
@@ -53,7 +51,7 @@ class AsciiFacesPage extends Component{
           nextListings.unshift(randomNumber());
           this.setState({ nextListings });
         }
-        this.setLoading(false);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -61,23 +59,28 @@ class AsciiFacesPage extends Component{
   }
   
   componentDidMount() {
-    const { page } = this.props;
-    this.getProduct(page, true);
-    this.getProduct(page + 1, false);
+    const { page, sort } = this.props;
+    this.getProduct(page, true, sort);
+    this.getProduct(page + 1, false, sort);
   }
   
   componentDidUpdate(prevProps) {
-    const { page } = this.props;
-    const { loading } = this.state;
+    const { page, sort, resetList, handleReset, setLoading, loading } = this.props;
+    if(resetList){
+      recentListing = [];
+      nextListings = [];
+      this.getProduct(page, true, sort);
+      handleReset();
+    }
     if (page !== prevProps.page && !loading) {
-      this.setLoading(true);
-      this.getProduct(page + 1, false);
+      setLoading(true);
+      this.getProduct(page + 1, false, sort);
     }
   }
   
   render(){
-    const {productList} = this.state;
-    const { loading, isLastItem } = this.state;
+    const {loading} = this.props;
+    const { isLastItem, productList } = this.state;
     return(
       <>
       <div className="product" >
@@ -86,7 +89,7 @@ class AsciiFacesPage extends Component{
             {
               productList.map((product, index) => {
                 if (product === "last") {
-                  return <p key={index}>... No more Product ...</p>;
+                  return <p key={index}>~ end of catalogue ~</p>;
                 } else if (product.ad === "ads") {
                   return <Ads key={index} src={product.adsUrl} />
                 } else {
@@ -104,7 +107,7 @@ class AsciiFacesPage extends Component{
               })
             }
           </div>
-          {loading && !isLastItem && <p className="loading"> loading More Items..</p>}
+          {loading && !isLastItem && <LoadingIcon />}
         </div>
       </div>
     </>
