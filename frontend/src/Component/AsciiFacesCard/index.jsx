@@ -7,7 +7,6 @@ import relativeDate from '../../utils/relativeDate';
 import './AsciiFacesCard.css';
 
 const AsciiFacesCard = ({id, face, size, price, date}) => {
-
   return(
     <div className="ascii-card">
       <div className="ascii-details">

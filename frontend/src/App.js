@@ -29,7 +29,7 @@ class App extends React.Component{
 
   handleScroll = () => {
     const {loading} = this.state;
-    if (window.pageYOffset + window.innerHeight + 200 > document.body.offsetHeight && !loading) {
+    if (window.pageYOffset + window.innerHeight + 230 > document.body.offsetHeight && !loading) {
       this.setState({ page: this.state.page + 1 });
     }
   }

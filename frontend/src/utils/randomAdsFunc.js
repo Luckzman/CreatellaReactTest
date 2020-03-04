@@ -1,6 +1,6 @@
 let lastNumber = 0;
 
-const randomNumber = function () {
+const randomNumber = () => {
   let getRandomNumber = Math.floor(Math.random() * 40);  
   if(getRandomNumber !== lastNumber){
       lastNumber = getRandomNumber;
